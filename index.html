@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anthony Pillard | Préparons notre échange</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500&family=Gochi+Hand&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --vert:     #1B4332;
+      --canopee:  #2D6A4F;
+      --feuille:  #52B788;
+      --brume:    #95D5B2;
+      --creme:    #F5EFE6;
+      --brun:     #2C1A1A;
+      --blanc:    #FAFAF8;
+      --border:   rgba(27,67,50,0.15);
+      --radius:   14px;
+      --radius-sm: 8px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--creme);
+      color: var(--brun);
+      min-height: 100vh;
+    }
+
+    /* ─── HEADER ─────────────────────────────────────────── */
+    .header {
+      background: var(--vert);
+      padding: 3rem 2rem 2.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 40% at 20% 80%, rgba(82,183,136,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 60% at 80% 20%, rgba(45,106,79,0.2) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    .brand-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.08);
+      border: 0.5px solid rgba(255,255,255,0.2);
+      border-radius: 30px;
+      padding: 6px 16px;
+      margin-bottom: 1.5rem;
+    }
+    .brand-badge .dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--feuille);
+    }
+    .brand-badge span {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--brume);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .header h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(22px, 5vw, 32px);
+      font-weight: 700;
+      color: var(--creme);
+      line-height: 1.25;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+    .header-accent {
+      font-family: 'Gochi Hand', cursive;
+      font-size: clamp(14px, 3vw, 18px);
+      color: var(--feuille);
+      font-weight: 400;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .header p {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: rgba(149,213,178,0.85);
+      line-height: 1.75;
+      max-width: 480px;
+      margin: 0 auto 1.5rem;
+    }
+    .tags {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .tag {
+      background: rgba(82,183,136,0.15);
+      border: 0.5px solid rgba(82,183,136,0.3);
+      color: var(--brume);
+      font-size: 12px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 500;
+      padding: 5px 14px;
+      border-radius: 20px;
+    }
+
+    /* ─── BODY ───────────────────────────────────────────── */
+    .container {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 3rem;
+    }
+
+    /* ─── SECTION LABEL ─────────────────────────────────── */
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 2rem 0 1rem;
+    }
+    .section-label .line {
+      flex: 1;
+      height: 0.5px;
+      background: var(--border);
+    }
+    .section-label span {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--canopee);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ─── FIELD CARD ─────────────────────────────────────── */
+    .field {
+      background: var(--blanc);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 0.75rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .field:focus-within {
+      border-color: var(--feuille);
+      box-shadow: 0 0 0 3px rgba(82,183,136,0.12);
+    }
+    .field-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 0.5rem;
+    }
+    .field-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--feuille);
+      letter-spacing: 0.04em;
+    }
+    .field-req {
+      font-size: 11px;
+      font-family: 'Inter', sans-serif;
+      color: var(--canopee);
+      background: rgba(82,183,136,0.1);
+      border-radius: 10px;
+      padding: 2px 9px;
+    }
+    .field label {
+      display: block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--brun);
+      line-height: 1.45;
+      margin-bottom: 0.3rem;
+    }
+    .field .hint {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: rgba(44,26,26,0.5);
+      line-height: 1.6;
+      margin-bottom: 0.75rem;
+    }
+    .field input[type="text"],
+    .field input[type="tel"],
+    .field input[type="email"],
+    .field textarea {
+      width: 100%;
+      background: var(--creme);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: var(--brun);
+      outline: none;
+      resize: none;
+      transition: border-color 0.2s;
+    }
+    .field input:focus,
+    .field textarea:focus {
+      border-color: var(--feuille);
+      background: #fff;
+    }
+    .field textarea { min-height: 90px; }
+
+    /* Checkboxes */
+    .checkbox-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 8px;
+      margin-top: 4px;
+    }
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--creme);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 8px 12px;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: var(--brun);
+    }
+    .checkbox-item:hover { border-color: var(--feuille); }
+    .checkbox-item input[type="checkbox"] { accent-color: var(--vert); width: 14px; height: 14px; flex-shrink: 0; }
+    .checkbox-item.checked { background: rgba(82,183,136,0.08); border-color: var(--feuille); }
+
+    /* ─── BONUS CARD ─────────────────────────────────────── */
+    .bonus-field {
+      background: var(--vert);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .bonus-field .field-num { color: var(--brume); }
+    .bonus-field label {
+      display: block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--creme);
+      margin-bottom: 0.3rem;
+    }
+    .bonus-field .hint {
+      font-size: 13px;
+      color: rgba(149,213,178,0.75);
+      line-height: 1.6;
+      margin-bottom: 0.75rem;
+    }
+    .bonus-field textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.08);
+      border: 0.5px solid rgba(255,255,255,0.15);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: var(--creme);
+      outline: none;
+      resize: none;
+      min-height: 90px;
+      transition: border-color 0.2s;
+    }
+    .bonus-field textarea::placeholder { color: rgba(149,213,178,0.4); }
+    .bonus-field textarea:focus { border-color: var(--feuille); }
+
+    /* ─── SUBMIT ─────────────────────────────────────────── */
+    .submit-wrap { margin-top: 2rem; text-align: center; }
+    .submit-btn {
+      background: var(--vert);
+      color: var(--creme);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      border: none;
+      border-radius: 50px;
+      padding: 14px 48px;
+      cursor: pointer;
+      letter-spacing: 0.03em;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .submit-btn:hover { background: var(--canopee); transform: translateY(-1px); }
+    .submit-btn:active { transform: translateY(0); }
+    .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+    .submit-note {
+      font-size: 12px;
+      color: rgba(44,26,26,0.4);
+      margin-top: 0.75rem;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* ─── SUCCESS STATE ──────────────────────────────────── */
+    #success {
+      display: none;
+      text-align: center;
+      padding: 3rem 1.5rem;
+    }
+    #success .check-circle {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: var(--vert);
+      margin: 0 auto 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #success .check-circle svg { width: 28px; height: 28px; }
+    #success h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--brun);
+      margin-bottom: 0.75rem;
+    }
+    #success .accent-text {
+      font-family: 'Gochi Hand', cursive;
+      font-size: 18px;
+      color: var(--canopee);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    #success p {
+      font-size: 14px;
+      color: rgba(44,26,26,0.6);
+      line-height: 1.7;
+      max-width: 380px;
+      margin: 0 auto;
+    }
+
+    /* ─── ERROR ──────────────────────────────────────────── */
+    .error-msg {
+      display: none;
+      background: rgba(200,50,50,0.07);
+      border: 0.5px solid rgba(200,50,50,0.2);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      font-size: 13px;
+      color: #8b2020;
+      margin-top: 0.75rem;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────────── */
+    .footer {
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 12px;
+      color: rgba(44,26,26,0.35);
+      font-family: 'Inter', sans-serif;
+    }
+
+    @media (max-width: 480px) {
+      .header { padding: 2rem 1.25rem 2rem; }
+      .field { padding: 1rem 1.125rem; }
+      .checkbox-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="brand-badge">
+      <div class="dot"></div>
+      <span>Anthony Pillard · Community Manager</span>
+    </div>
+    <h1>
+      <span class="header-accent">avant notre premier appel</span>
+      Préparons ensemble notre échange
+    </h1>
+    <p>Ce formulaire te prend moins de 5 minutes. Il me permet d'arriver bien préparé pour qu'on parle de ce qui compte vraiment : ton projet et comment je peux t'aider à grandir sur les réseaux.</p>
+    <div class="tags">
+      <span class="tag">5 min chrono</span>
+      <span class="tag">8 questions</span>
+      <span class="tag">Confidentiel</span>
+    </div>
+  </div>
+
+  <!-- FORM -->
+  <div class="container">
+    <form id="mainForm" novalidate>
+
+      <!-- SECTION 1 -->
+      <div class="section-label">
+        <div class="line"></div>
+        <span>Tes coordonnées</span>
+        <div class="line"></div>
+      </div>
+
+      <div class="field">
+        <div class="field-meta">
+          <span class="field-num">01</span>
+          <span class="field-req">obligatoire</span>
+        </div>
+        <label for="q1">Ton prénom et nom</label>
+        <input type="text" id="q1" name="q1" placeholder="Ex : Lucas Martin" required />
+      </div>
+
+      <div class="field">
+        <div class="field-meta">
+          <span class="field-num">02</span>
+          <span class="field-req">obligatoire</span>
+        </div>
+        <label for="q2">Ton numéro de téléphone</label>
+        <p class="hint">Pour confirmer notre rendez-vous si besoin.</p>
+        <input type="tel" id="q2" name="q2" placeholder="Ex : +33 6 12 34 56 78" required />
+      </div>
+
+      <!-- SECTION 2 -->
+      <div class="section-label">
+        <div class="line"></div>
+        <span>Ton activité</span>
+        <div class="line"></div>
+      </div>
+
+      <div class="field">
+        <div class="field-meta">
+          <span class="field-num">03</span>
+          <span class="field-req">obligatoire</span>
+        </div>
+        <label for="q3">Quel est ton nom de créateur / ta marque, et sur quelles plateformes es-tu présent ?</label>
+        <p class="hint">Partage ton handle Instagram, ta chaîne YouTube, ou tes liens — tout ce qui me permettra d'explorer ton univers avant l'appel.</p>
+        <textarea id="q3" name="q3" placeholder="Ex : @mon_handle, youtube.com/machaine…" required></textarea>
+      </div>
+
+      <div class="field">
+        <div class="field-meta">
+          <span class="field-num">04</span>
+          <span class="field-req">obligatoire</span>
+        </div>
+        <label for="q4">En une phrase, comment tu décrirais ce que tu fais et pour qui ?</label>
+        <p class="hint">Pas besoin d'être parfait — je cherche juste à comprendre ton univers avant d'aller plus loin.</p>
+        <textarea id="q4" name="q4" placeholder="Ex : Je crée du contenu IA pour aider les débutants à comprendre les outils…" required></textarea>
+      </div>
+
+      <!-- SECTION 3 -->
+      <div class="section-label">
+        <div class="line"></div>
+        <span>Tes réseaux sociaux aujourd'hui</span>
+        <div class="line"></div>
+      </div>
+
+      <div class="field">
+        <div class="field-meta">
+          <span class="field-num">05</span>
+          <span class="field-req">obligatoire</span>
+        </div>
+        <label>Sur quel(s) réseau(x) es-tu le plus actif en ce moment ?</label>
+        <div class="checkbox-grid" id="q5">
+          <label class="checkbox-item"><input type="checkbox" value="Instagram" /> Instagram</label>
+          <label class="checkbox-item"><input type="checkbox" value="YouTube" /> YouTube</label>
+          <label class="checkbox-item"><input type="checkbox" value="TikTok" /> TikTok</label>
+          <label class="checkbox-item"><input type="checkbox" value="Facebook" /> Facebook</label>
+          <label class="checkbox-item"><input type="checkbox" value="LinkedIn" /> LinkedIn</label>
+          <label class="checkbox-item"><input type="checkbox" value="Autre" /> Autre</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="field-meta">
+          <span class="field-num">06</span>
+          <span class="field-req">obligatoire</span>
+        </div>
+        <label for="q6">Quelle est ta principale difficulté sur les réseaux sociaux en ce moment ?</label>
+        <p class="hint">Ex : manque de régularité, peu d'engagement, pas le temps de créer du contenu, croissance bloquée…</p>
+        <textarea id="q6" name="q6" placeholder="Décris ta situation avec tes propres mots…" required></textarea>
+      </div>
+
+      <!-- SECTION 4 -->
+      <div class="section-label">
+        <div class="line"></div>
+        <span>Tes attentes</span>
+        <div class="line"></div>
+      </div>
+
+      <div class="field">
+        <div class="field-meta">
+          <span class="field-num">07</span>
+          <span class="field-req">obligatoire</span>
+        </div>
+        <label for="q7">Quel résultat espères-tu obtenir grâce à un meilleur accompagnement sur les réseaux ?</label>
+        <p class="hint">Pas besoin d'être précis — une direction, une intention, ça suffit.</p>
+        <textarea id="q7" name="q7" placeholder="Ex : Gagner en régularité, toucher plus de monde, convertir mes abonnés en clients…" required></textarea>
+      </div>
+
+      <div class="field">
+        <div class="field-meta">
+          <span class="field-num">08</span>
+        </div>
+        <label for="q8">As-tu déjà travaillé avec un community manager ou une agence ? Si oui, comment ça s'est passé ?</label>
+        <p class="hint">Cette question m'aide à comprendre où tu en es et ce que tu attends d'une vraie collaboration.</p>
+        <textarea id="q8" name="q8" placeholder="Optionnel — mais souvent très utile !"></textarea>
+      </div>
+
+      <!-- BONUS -->
+      <div class="section-label">
+        <div class="line"></div>
+        <span>La question bonus</span>
+        <div class="line"></div>
+      </div>
+
+      <div class="bonus-field">
+        <div class="field-meta">
+          <span class="field-num">Bonus</span>
+        </div>
+        <label for="qbonus">Selon toi, quel est le truc qui te différencie vraiment des autres dans ton domaine ?</label>
+        <p class="hint">C'est la question que j'aime poser. Souvent, la réponse dit beaucoup sur ce qu'on va pouvoir mettre en valeur ensemble.</p>
+        <textarea id="qbonus" name="qbonus" placeholder="Optionnel — mais les meilleures réponses viennent souvent d'ici…"></textarea>
+      </div>
+
+      <!-- SUBMIT -->
+      <div class="submit-wrap">
+        <button type="submit" class="submit-btn" id="submitBtn">Envoyer mes réponses</button>
+        <p class="submit-note">Tes réponses sont confidentielles et utilisées uniquement pour préparer notre appel.</p>
+        <div class="error-msg" id="errorMsg">Une erreur s'est produite lors de l'envoi. Réessaie dans quelques instants.</div>
+      </div>
+
+    </form>
+
+    <!-- SUCCESS -->
+    <div id="success">
+      <div class="check-circle">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#F5EFE6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      </div>
+      <h2>
+        <span class="accent-accent-text" style="font-family:'Gochi Hand',cursive;font-size:18px;color:#2D6A4F;display:block;margin-bottom:6px;">Merci, c'est reçu !</span>
+        Je lis tes réponses avant vendredi.
+      </h2>
+      <p>Je prends le temps de me préparer pour que notre échange soit vraiment utile. Si tu as des questions d'ici là, tu peux me contacter directement à <strong>anthonypillard55@gmail.com</strong>. À très vite !</p>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    Anthony Pillard · Community Manager &nbsp;·&nbsp; anthonypillard55@gmail.com
+  </div>
+
+  <script>
+    // ── Checkbox styling ──────────────────────────────────
+    document.querySelectorAll('.checkbox-item input').forEach(cb => {
+      cb.addEventListener('change', () => {
+        cb.closest('.checkbox-item').classList.toggle('checked', cb.checked);
+      });
+    });
+
+    // ── Form submit ───────────────────────────────────────
+    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwGwKR75ReldGZuiHg3omSUy_6nsoHDjIGqcis4oTyzd24wsrMZexBs2-iF-NJwPB3raA/exec";
+
+    const form = document.getElementById('mainForm');
+    const btn  = document.getElementById('submitBtn');
+    const err  = document.getElementById('errorMsg');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      err.style.display = 'none';
+
+      // Validation champs requis
+      const required = ['q1','q2','q3','q4','q6','q7'];
+      let valid = true;
+      required.forEach(id => {
+        const el = document.getElementById(id);
+        if (!el.value.trim()) { el.style.borderColor = '#c83232'; valid = false; }
+        else el.style.borderColor = '';
+      });
+
+      // Q5 : au moins 1 case cochée
+      const checked = [...document.querySelectorAll('#q5 input:checked')].map(c => c.value);
+      if (checked.length === 0) { document.getElementById('q5').style.outline = '1.5px solid #c83232'; valid = false; }
+      else document.getElementById('q5').style.outline = '';
+
+      if (!valid) {
+        err.textContent = 'Merci de remplir tous les champs obligatoires.';
+        err.style.display = 'block';
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Envoi en cours…';
+
+      const payload = {
+        date:   new Date().toLocaleString('fr-FR'),
+        q1:     document.getElementById('q1').value.trim(),
+        q2:     document.getElementById('q2').value.trim(),
+        q3:     document.getElementById('q3').value.trim(),
+        q4:     document.getElementById('q4').value.trim(),
+        q5:     checked.join(', '),
+        q6:     document.getElementById('q6').value.trim(),
+        q7:     document.getElementById('q7').value.trim(),
+        q8:     document.getElementById('q8').value.trim(),
+        qbonus: document.getElementById('qbonus').value.trim(),
+      };
+
+      try {
+        await fetch(APPS_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        form.style.display = 'none';
+        document.getElementById('success').style.display = 'block';
+      } catch {
+        err.textContent = 'Une erreur s\'est produite. Réessaie dans quelques instants.';
+        err.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'Envoyer mes réponses';
+      }
+    });
+  </script>
+</body>
+</html>
